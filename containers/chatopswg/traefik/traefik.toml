@@ -7,7 +7,7 @@
 # Optional
 # Default: false
 #
-# debug = true
+debug = true
 
 # Traefik logs file
 # If not defined, logs to stdout
@@ -22,6 +22,7 @@
 # Default: "ERROR"
 #
 # logLevel = "ERROR"
+logLevel = "DEBUG"
 
 # Entrypoints to be used by frontends that do not specify any entrypoint.
 # Each frontend can specify its own entrypoints.
@@ -29,7 +30,7 @@
 # Optional
 # Default: ["http"]
 #
-# defaultEntryPoints = ["http", "https"]
+defaultEntryPoints = ["http", "https"]
 
 # Entrypoints definition
 #
@@ -38,6 +39,11 @@
 [entryPoints]
     [entryPoints.http]
     address = ":80"
+#        [entryPoints.http.redirect]
+#            entryPoint = "https"
+    [entryPoints.https]
+    address = ":443"
+        [entryPoints.https.tls]
 
 # Enable access logs
 # By default it will write to stdout and produce logs in the textual
@@ -133,8 +139,20 @@ swarmmode = false
 #
 # Optional
 #
-[docker.tls]
-ca = "/etc/ssl/ca.crt"
-cert = "/etc/ssl/docker.crt"
-key = "/etc/ssl/docker.key"
-insecureskipverify = true
+#[docker.tls]
+#ca = "/etc/ssl/ca.crt"
+#cert = "/etc/ssl/docker.crt"
+#key = "/etc/ssl/docker.key"
+#insecureskipverify = true
+
+
+## See https://github.com/containous/traefik/pull/2701
+[acme]
+email = "emerson@alligo.com.br"
+storage = "/etc/traefik/acme/acme.json"
+entryPoint = "https"
+onHostRule = true
+onDemand = false
+
+[acme.httpChallenge]
+    entryPoint = "http"
