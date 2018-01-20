@@ -4,3 +4,4 @@ and [fititnt/chatops-wg#1](https://github.com/fititnt/chatops-wg/issues/1)
 for more info.
 
 - [Logbook of ChatOpsWG VM](logbook/chatopswg.sh)
+- [DNS of domains used](dns.tsv)

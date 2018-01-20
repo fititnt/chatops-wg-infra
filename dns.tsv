@@ -1,0 +1,13 @@
+record	type	value	comment
+chatopswg	A	45.55.32.60	Note: base domain used is alligo.com.br
+rocketchat.chatopswg	CNAME	chatopswg.alligo.com.br	Alias for the VM 'ChatOpsWG'
+traefik.chatopswg	CNAME	chatopswg.alligo.com.br	https://traefik.io/
+001.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
+002.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
+003.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
+004.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
+005.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
+006.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
+007.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
+008.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
+009.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
