@@ -46,3 +46,38 @@ dockerComposeVersion=1.18.0
 
 sudo curl -L https://github.com/docker/compose/releases/download/$dockerComposeVersion/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+
+## Prepare place to store docker-compose files of containers
+mkdir /root/containers
+
+################################################################################
+# Cheat cheet to manage containers                                             #
+################################################################################
+
+cd /root/containers # all commands are relative to this path
+
+## First time: need to start containers who create a network before traefik
+## it will not complain about network not found (rocketchat,other... then traefik)
+
+## Traefik
+# See https://traefik.io/
+# "Træfik (pronounced like traffic) is a modern HTTP reverse proxy and load 
+# balancer made to deploy microservices with ease. It supports several
+# backends (...) to manage its configuration automatically and dynamically."
+
+docker-compose -f ./traefik/docker-compose.yml up -d traefik # Start
+docker-compose -f ./traefik/docker-compose.yml up traefik # Start, debug mode
+docker-compose -f ./traefik/docker-compose.yml stop traefik # Stop
+
+### Rocket.Chat
+# "Rocket.Chat is the leading free open source team chat Slack alternative (...)
+# Rocket.Chat is free, unlimited and open source. Replace Slack with the
+# ultimate team chat software solution. Free audio and video conferencing,
+# guest access, screen sharing, file sharing, LiveChat, LDAP Group Sync,
+# two-factor authentication (2FA), E2E encryption, SSO, dozens of OAuth
+# providers and unlimited Users, Guests, Channels, Messages, Searches, Files"
+
+docker-compose -f ./rocketchat/docker-compose.yml up -d mongo
+docker-compose -f ./rocketchat/docker-compose.yml up -d mongo-init-replica  # Only first time
+docker-compose -f ./rocketchat/docker-compose.yml up -d rocketchat
+docker-compose -f ./rocketchat/docker-compose.yml up -d hubot

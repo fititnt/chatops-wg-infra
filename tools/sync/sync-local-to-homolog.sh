@@ -20,7 +20,7 @@
 #===============================================================================
 
 # To listen chances and automatic upload, run
-#   cd /alligo/code/fititnt/chatops-wg-infra/containers
-#   onchange.sh /alligo/code/fititnt/chatops-wg-infra/containers/tools/sync/sync-local-to-homolog.sh
+#   cd /alligo/code/fititnt/chatops-wg-infra/containers/chatopswg
+#   onchange.sh /alligo/code/fititnt/chatops-wg-infra/tools/sync/sync-local-to-homolog.sh
 
 rsync -tir --chmod=ugo+rwx /alligo/code/fititnt/chatops-wg-infra/containers/chatopswg/ root@chatopswg.alligo.com.br:/root/containers
