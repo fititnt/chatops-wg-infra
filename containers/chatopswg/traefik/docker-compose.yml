@@ -1,5 +1,10 @@
 version: '2'
 
+### docker run -p 8080:8080 -p 80:80 -v $PWD/traefik.toml:/etc/traefik/traefik.toml traefik
+
+# This command work getting the traefik file, but the composer version, no
+### docker run -p 8080:8080 -p 443:443 -p 80:80 -v $PWD/traefik.toml:/etc/traefik/traefik.toml -v $PWD/ssl:/etc/traefik/ssl -v $PWD/acme:/etc/traefik/acme -v /var/run/docker.sock:/var/run/docker.sock --name xpto4 traefik:v1.5.0-rc5
+
 services:
   traefik:
     # image: traefik
@@ -19,9 +24,14 @@ services:
       - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      # - ./traefik.toml:/traefik.toml
       # - ./traefik.toml:/etc/traefik/traefik.toml
-      - "./traefik.toml:/traefik.toml:ro"
+      - /root/containers/traefik/traefik.toml:/etc/traefik/traefik.toml
+      #- ./traefik.toml:/traefik.toml
+      #- ./traefik.toml:/etc/traefik/traefik.toml
+      #- /root/containers/traefik/traefik.toml:/traefik.toml
+      #- /root/containers/traefik/traefik.toml:/etc/traefik/traefik.toml
+      # - ./traefik.toml:/etc/traefik/traefik.toml
+      # - "./traefik.toml:/traefik.toml:ro"
       # - /dev/null:/traefik.toml
       - ./ssl:/etc/traefik/ssl
       - ./acme:/etc/traefik/acme

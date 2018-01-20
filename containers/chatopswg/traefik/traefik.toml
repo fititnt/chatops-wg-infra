@@ -152,7 +152,7 @@ email = "emerson@alligo.com.br"
 storage = "/etc/traefik/acme/acme.json"
 entryPoint = "https"
 onHostRule = true
-onDemand = false
+onDemand = true
 
 [acme.httpChallenge]
     entryPoint = "http"
