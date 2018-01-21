@@ -69,6 +69,34 @@ docker-compose -f ./traefik/docker-compose.yml up -d traefik # Start
 docker-compose -f ./traefik/docker-compose.yml up traefik # Start, debug mode
 docker-compose -f ./traefik/docker-compose.yml stop traefik # Stop
 
+## Without docker-compose
+
+# Debug mode
+cd /root/containers/traefik
+docker rm traefik_traefik_1
+
+docker run -p 8080:8080 -p 443:443 -p 80:80 \
+       --env-file .env \
+       -v $PWD/traefik.toml:/etc/traefik/traefik.toml \
+       -v $PWD/ssl:/etc/traefik/ssl \
+       -v $PWD/acme:/etc/traefik/acme \
+       -v /var/run/docker.sock:/var/run/docker.sock \
+       --name traefik_traefik_1 \
+       traefik
+
+# AS daemon (extra -d param)
+docker run -d -p 8080:8080 -p 443:443 -p 80:80 \
+       --env-file .env \
+       -v $PWD/traefik.toml:/etc/traefik/traefik.toml \
+       -v $PWD/ssl:/etc/traefik/ssl \
+       -v $PWD/acme:/etc/traefik/acme \
+       -v /var/run/docker.sock:/var/run/docker.sock \
+       --name traefik_traefik_1 \
+       traefik
+
+# see logs
+docker logs -f traefik_traefik_1
+
 ### Rocket.Chat
 # "Rocket.Chat is the leading free open source team chat Slack alternative (...)
 # Rocket.Chat is free, unlimited and open source. Replace Slack with the

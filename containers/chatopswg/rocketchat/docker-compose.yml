@@ -8,19 +8,19 @@ services:
       - ./uploads:/app/uploads
     environment:
       - PORT=3000
-      - ROOT_URL=https://rocketchat.chatopswg.alligo.com.br # http://45.55.32.60:3000 # old value http://localhost:3000
+      - ROOT_URL=https://rocketchat.chatopswg.xyz # http://45.55.32.60:3000 # old value http://localhost:3000
       - MONGO_URL=mongodb://mongo:27017/rocketchat
       - MONGO_OPLOG_URL=mongodb://mongo:27017/local
       - MAIL_URL=smtp://smtp.email
-      - HTTP_PROXY=http://rocketchat.chatopswg.alligo.com.br 
-      - HTTPS_PROXY=https://rocketchat.chatopswg.alligo.com.br 
+      - HTTP_PROXY=http://rocketchat.chatopswg.xyz
+      - HTTPS_PROXY=https://rocketchat.chatopswg.xyz
     depends_on:
       - mongo
     ports:
       - 3000:3000
     labels:
       - "traefik.backend=rocketchat"
-      - "traefik.frontend.rule=Host: rocketchat.chatopswg.alligo.com.br "
+      - "traefik.frontend.rule=Host: rocketchat.chatopswg.xyz"
 #    networks:
 #      - etica_chat
 

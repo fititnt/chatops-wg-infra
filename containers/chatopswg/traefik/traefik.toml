@@ -81,6 +81,20 @@ defaultEntryPoints = ["http", "https"]
 #
 address = ":8080"
 
+# SSL certificate and key used.
+#
+# Optional
+#
+# certFile = "traefik.crt"
+# keyFile = "traefik.key"
+
+# Set REST API to read-only mode.
+#
+# Optional
+# Default: false
+#
+readOnly = true
+
 ################################################################
 # Docker configuration backend
 ################################################################
@@ -99,7 +113,7 @@ endpoint = "unix:///var/run/docker.sock"
 #
 # Required
 #
-domain = "docker.localhost"
+domain = "alpha.chatopswg.xyz"
 
 # Enable watch docker changes
 #
@@ -154,7 +168,7 @@ entryPoint = "https"
 onHostRule = true
 onDemand = false
 
-dnsProvider = "Cloudflare" # https://docs.traefik.io/configuration/acme/
+dnsProvider = "cloudflare" # https://docs.traefik.io/configuration/acme/
 
 #[acme.httpChallenge]
 #    entryPoint = "http"
