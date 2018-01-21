@@ -37,7 +37,7 @@ services:
       - ./ssl:/etc/traefik/ssl
       - ./acme:/etc/traefik/acme
     labels:
-      - "traefik.frontend.rule=Host: traefik.chatopswg.alligo.com.br"
+      - "traefik.frontend.rule=Host: traefik.chatopswg.xyz"
 
 networks:
   traefik:

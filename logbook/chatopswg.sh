@@ -94,6 +94,9 @@ docker run -d -p 8080:8080 -p 443:443 -p 80:80 \
        --name traefik_traefik_1 \
        traefik
 
+# Connect to the rocketchat network
+docker network connect rocketchat_default traefik_traefik_1
+
 # see logs
 docker logs -f traefik_traefik_1
 

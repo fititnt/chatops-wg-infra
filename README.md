@@ -5,3 +5,8 @@ for more info.
 
 - [Logbook of ChatOpsWG VM](logbook/chatopswg.sh)
 - [DNS of domains used](dns.tsv)
+
+## Domains
+
+- Rocket.Chat <https://rocketchat.chatopswg.xyz>
+- Traefik dashboard <http://traefik.chatopswg.xyz:8080>
