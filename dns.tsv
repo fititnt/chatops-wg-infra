@@ -1,13 +1,15 @@
 record	type	value	comment
-chatopswg	A	45.55.32.60	Note: base domain used is alligo.com.br
-rocketchat.chatopswg	CNAME	chatopswg.alligo.com.br	Alias for the VM 'ChatOpsWG'
-traefik.chatopswg	CNAME	chatopswg.alligo.com.br	https://traefik.io/
-001.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
-002.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
-003.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
-004.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
-005.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
-006.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
-007.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
-008.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
-009.ia.chatopswg	CNAME	chatopswg.alligo.com.br	Reserved for possible future Intelligent agent
+chatopswg.xyz	A	45.55.32.60	Main domain
+www	A	45.55.32.60	www.chatopswg.xyz
+alpha	A	45.55.32.60	alpha.chatopswg.xyz, Alias for the VM 'ChatOpsWG'
+rocketchat	CNAME	alpha.chatopswg.xyz	Rocket.Chat
+traefik	CNAME	alpha.chatopswg.xyz	https://traefik.io/
+ia001	CNAME	alpha.chatopswg.xyz	Reserved for possible future Intelligent agent
+ia002	CNAME	alpha.chatopswg.xyz	Reserved for possible future Intelligent agent
+ia003	CNAME	alpha.chatopswg.xyz	Reserved for possible future Intelligent agent
+ia004	CNAME	alpha.chatopswg.xyz	Reserved for possible future Intelligent agent
+ia005	CNAME	alpha.chatopswg.xyz	Reserved for possible future Intelligent agent
+ia006	CNAME	alpha.chatopswg.xyz	Reserved for possible future Intelligent agent
+ia007	CNAME	alpha.chatopswg.xyz	Reserved for possible future Intelligent agent
+ia008	CNAME	alpha.chatopswg.xyz	Reserved for possible future Intelligent agent
+ia009	CNAME	alpha.chatopswg.xyz	Reserved for possible future Intelligent agent
