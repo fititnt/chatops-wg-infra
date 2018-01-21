@@ -1,0 +1,3 @@
+temp/
+secrets/
+containers/chatopswg/traefik/.env
