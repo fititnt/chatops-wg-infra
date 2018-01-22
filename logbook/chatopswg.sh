@@ -97,8 +97,14 @@ docker run -d -p 8080:8080 -p 443:443 -p 80:80 \
 # Connect to the rocketchat network
 docker network connect rocketchat_default traefik_traefik_1
 
+# Connect to the placeholder network
+docker network connect placeholder_default traefik_traefik_1
+
 # see logs
 docker logs -f traefik_traefik_1
+
+# To copy acme from a old backup:
+# scp -r /backup/chatopswg/alpha.chatopswg.xyz/temp/traefik/acme/acme.json root@alpha.chatopswg.xyz:/root/containers/traefik/acme/acme.json
 
 ### Rocket.Chat
 # "Rocket.Chat is the leading free open source team chat Slack alternative (...)
@@ -112,3 +118,7 @@ docker-compose -f ./rocketchat/docker-compose.yml up -d mongo
 docker-compose -f ./rocketchat/docker-compose.yml up -d mongo-init-replica  # Only first time
 docker-compose -f ./rocketchat/docker-compose.yml up -d rocketchat
 docker-compose -f ./rocketchat/docker-compose.yml up -d hubot
+
+### Placeholder for static files
+docker-compose -f ./placeholder/docker-compose.yml up -d nginx
+docker-compose -f ./placeholder/docker-compose.yml up nginx # Debug
