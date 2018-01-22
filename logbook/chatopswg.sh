@@ -100,6 +100,9 @@ docker network connect rocketchat_default traefik_traefik_1
 # Connect to the placeholder network
 docker network connect placeholder_default traefik_traefik_1
 
+# Connect to the iaphpbotman network
+docker network connect iaphpbotman_default traefik_traefik_1
+
 # see logs
 docker logs -f traefik_traefik_1
 
@@ -122,3 +125,11 @@ docker-compose -f ./rocketchat/docker-compose.yml up -d hubot
 ### Placeholder for static files
 docker-compose -f ./placeholder/docker-compose.yml up -d nginx
 docker-compose -f ./placeholder/docker-compose.yml up nginx # Debug
+
+### ia-php-botman
+# See https://github.com/fititnt/chatops-wg-ia-php-botman
+# Hotfix form permissions
+# `chmod 777 -R /root/containers/ia-php-botman/``
+
+docker-compose -f ./ia-php-botman/docker-compose.yml up -d
+docker-compose -f ./ia-php-botman/docker-compose.yml up # Debug only

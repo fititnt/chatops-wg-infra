@@ -8,5 +8,6 @@ for more info.
 
 ## Domains
 
-- Rocket.Chat <https://rocketchat.chatopswg.xyz>
 - Traefik dashboard <http://traefik.chatopswg.xyz:8080>
+- Rocket.Chat <https://rocketchat.chatopswg.xyz>
+- Intelligent Agent with PHP / BotMan Studio <https://ia004.chatopswg.xyz> (Source files: <https://github.com/fititnt/chatops-wg-ia-php-botman>)
