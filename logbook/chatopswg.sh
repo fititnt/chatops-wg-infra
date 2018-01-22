@@ -103,6 +103,9 @@ docker network connect placeholder_default traefik_traefik_1
 # Connect to the iaphpbotman network
 docker network connect iaphpbotman_default traefik_traefik_1
 
+# Connect to the iaphpbotman network
+docker network connect iajsbotkit_default traefik_traefik_1
+
 # see logs
 docker logs -f traefik_traefik_1
 
@@ -133,3 +136,9 @@ docker-compose -f ./placeholder/docker-compose.yml up nginx # Debug
 
 docker-compose -f ./ia-php-botman/docker-compose.yml up -d
 docker-compose -f ./ia-php-botman/docker-compose.yml up # Debug only
+
+### ia-js-botkit
+# See https://github.com/fititnt/chatops-wg-ia-js-botkit
+
+docker-compose -f ./ia-js-botkit/docker-compose.yml up -d
+docker-compose -f ./ia-js-botkit/docker-compose.yml up # Debug only
