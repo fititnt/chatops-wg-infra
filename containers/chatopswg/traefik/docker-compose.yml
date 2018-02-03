@@ -1,20 +1,13 @@
 version: '2'
 
-### docker run -p 8080:8080 -p 80:80 -v $PWD/traefik.toml:/etc/traefik/traefik.toml traefik
-
 # This command work getting the traefik file, but the composer version, no
 ### docker run -p 8080:8080 -p 443:443 -p 80:80 -v $PWD/traefik.toml:/etc/traefik/traefik.toml -v $PWD/ssl:/etc/traefik/ssl -v $PWD/acme:/etc/traefik/acme -v /var/run/docker.sock:/var/run/docker.sock --name xpto4 traefik:v1.5.0-rc5
 
 services:
   traefik:
     image: traefik
-    # image: traefik:v1.5.0-rc5 # See temporary workaround, https://github.com/containous/traefik/pull/2701#issuecomment-357799697
-    #command: --web --docker --docker.domain=cadu.vps.etica.ai --logLevel=DEBUG
-    # command: --web -c /dev/null  --docker --logLevel=DEBUG --docker.watch --acme --acme.storage=/etc/traefik/acme/acme.json --acme.email=postmater@etica.ai --acme.entryPoint=https --entryPoints='Name:http Address::80 Redirect.EntryPoint:https' --entryPoints='Name:https Address::443 TLS' --defaultentrypoints=http,https --acme.domains="chat.etica.ai,cadu.vps.etica.ai,traefik.cadu.vps.etica.ai,prometheus.cadu.vps.etica.ai,grafana.cadu.vps.etica.ai"
-    # command: --web -c /dev/null  --docker --logLevel=DEBUG --docker.watch --acme --acme.storage=/etc/traefik/acme/acme.json --acme.email=postmater@alligo.com.br --acme.entryPoint=https --entryPoints='Name:http Address::80 Redirect.EntryPoint:https' --entryPoints='Name:https Address::443 TLS' --defaultentrypoints=http,https --acme.domains="chatopswg.alligo.com.br,rocketchat.chatopswg.alligo.com.br,traefik.chatopswg.alligo.com.br,001.ia.chatopswg.alligo.com.br,002.ia.chatopswg.alligo.com.br,003.ia.chatopswg.alligo.com.br,004.ia.chatopswg.alligo.com.br"
-    # command: --web -c /dev/null  --docker --logLevel=DEBUG --docker.watch --acme --acme.storage=/etc/traefik/acme/acme.json --acme.email=postmater@alligo.com.br --acme.entryPoint=https --entryPoints='Name:http Address::80' --entryPoints='Name:https Address::443 TLS' --defaultentrypoints=http,https --acme.domains="chatopswg.alligo.com.br,rocketchat.chatopswg.alligo.com.br,traefik.chatopswg.alligo.com.br,001.ia.chatopswg.alligo.com.br,002.ia.chatopswg.alligo.com.br,003.ia.chatopswg.alligo.com.br,004.ia.chatopswg.alligo.com.br"
-    command: -c /dev/null --docker --logLevel=DEBUG --docker.watch --web
-    #command: traefik --docker --acme=true --acme.domains='chat.etica.ai' --acme.email='postmaster@etica.ai' --acme.entrypoint=https --acme.storagefile=acme.json --defaultentrypoints=http --defaultentrypoints=https --entryPoints='Name:http Address::80 Redirect.EntryPoint:https' --entryPoints='Name:https Address::443 TLS.Certificates:'
+    env_file:
+     - ./.env
     networks:
       - traefik
       - rocketchat_default
@@ -26,14 +19,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/etc/traefik/traefik.toml
       - ./traefik.toml:/traefik.toml
-      # - /root/containers/traefik/traefik.toml:/etc/traefik/traefik.toml
-      #- ./traefik.toml:/traefik.toml
-      #- ./traefik.toml:/etc/traefik/traefik.toml
-      #- /root/containers/traefik/traefik.toml:/traefik.toml
-      #- /root/containers/traefik/traefik.toml:/etc/traefik/traefik.toml
-      # - ./traefik.toml:/etc/traefik/traefik.toml
-      # - "./traefik.toml:/traefik.toml:ro"
-      # - /dev/null:/traefik.toml
       - ./ssl:/etc/traefik/ssl
       - ./acme:/etc/traefik/acme
     labels:
