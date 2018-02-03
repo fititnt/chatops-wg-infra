@@ -1,13 +1,14 @@
 # ChatOps WG Infra
 See [ChatOps for non-DevOps people Working Group 2018/01](https://github.com/fititnt/chatops-wg)
-and [fititnt/chatops-wg#1](https://github.com/fititnt/chatops-wg/issues/1)
-for more info.
+for more information about this repository.
 
-- [Logbook of ChatOpsWG VM](logbook/chatopswg.sh)
+- [Logbook of ChatOpsWG VM](logbook/chatopswg.sh) - (_e.g. how the VM was configured to run docker containers_)
+- The containers
+  - [Containers on chatops-wg-infra](containers/chatopswg)
+  - [chatops-wg-ia-php-botman](https://github.com/fititnt/chatops-wg-ia-php-botman)
+  - [chatops-wg-ia-js-botkit](https://github.com/fititnt/chatops-wg-ia-js-botkit)
 - [DNS of domains used](dns.tsv)
 
 ## Domains
 
-- Traefik dashboard <http://traefik.chatopswg.xyz:8080>
-- Rocket.Chat <https://rocketchat.chatopswg.xyz>
-- Intelligent Agent with PHP / BotMan Studio <https://ia004.chatopswg.xyz> (Source files: <https://github.com/fititnt/chatops-wg-ia-php-botman>)
+See list of domains on [chatops-wg README.md](https://github.com/fititnt/chatops-wg#deliverables-of-the-group-so-far)
