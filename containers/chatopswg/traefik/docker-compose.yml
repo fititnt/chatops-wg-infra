@@ -1,8 +1,5 @@
 version: '2'
 
-# This command work getting the traefik file, but the composer version, no
-### docker run -p 8080:8080 -p 443:443 -p 80:80 -v $PWD/traefik.toml:/etc/traefik/traefik.toml -v $PWD/ssl:/etc/traefik/ssl -v $PWD/acme:/etc/traefik/acme -v /var/run/docker.sock:/var/run/docker.sock --name xpto4 traefik:v1.5.0-rc5
-
 services:
   traefik:
     image: traefik
@@ -11,6 +8,9 @@ services:
     networks:
       - traefik
       - rocketchat_default
+      - iaphpbotman_default
+      - iajsbotkit_default
+      - placeholder_default
     ports:
       - "80:80"
       - "8080:8080"
@@ -24,9 +24,26 @@ services:
     labels:
       - "traefik.frontend.rule=Host: traefik.chatopswg.xyz"
 
+# TODO: traefik should autodiscover and join other containers network with no
+#       need of update each time this file again (its purpose was to
+#       self-discovery with no need for a restart as better replacement to
+#       NGinx as load balancer for containers) (fititnt, 2018-02-03 15:37 BRTS)
+
 networks:
   traefik:
     driver: bridge
   rocketchat_default:
     external:
       name: rocketchat_default
+  iaphpbotman_default:
+    external:
+      name: iaphpbotman_default
+  iajsbotkit_default:
+    external:
+      name: iajsbotkit_default
+  rocketchat_default:
+    external:
+      name: rocketchat_default
+  placeholder_default:
+    external:
+      name: placeholder_default

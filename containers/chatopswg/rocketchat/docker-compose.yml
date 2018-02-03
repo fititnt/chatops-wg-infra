@@ -16,8 +16,11 @@ services:
       - HTTPS_PROXY=https://rocketchat.chatopswg.xyz
     depends_on:
       - mongo
-    ports:
-      - 3000:3000
+
+    # Routing via Traefik; remove comments to allow direct access
+    # ports:
+    #   - 3000:3000
+
     labels:
       - "traefik.backend=rocketchat"
       - "traefik.frontend.rule=Host: rocketchat.chatopswg.xyz"

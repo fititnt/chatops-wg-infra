@@ -5,8 +5,9 @@ services:
         volumes:
             - "./etc/nginx/default.conf:/etc/nginx/conf.d/default.conf"
             - "./web:/var/www/html/public"
-        ports:
-            - "8100:80"
+        # Routing via Traefik; remove comments to allow direct access
+        # ports:
+        #     - "8100:80"
         command: /bin/sh -c "nginx -g 'daemon off;'"
         restart: always
         labels:
