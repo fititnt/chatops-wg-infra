@@ -7,7 +7,7 @@ services:
      - ./.env
     networks:
       - traefik
-      - rocketchat_default
+#      - rocketchat_default
       - iaphpbotman_default
       - iajsbotkit_default
       - placeholder_default
@@ -41,9 +41,9 @@ networks:
   iajsbotkit_default:
     external:
       name: iajsbotkit_default
-  rocketchat_default:
-    external:
-      name: rocketchat_default
+#  rocketchat_default:
+#    external:
+#      name: rocketchat_default
   placeholder_default:
     external:
       name: placeholder_default

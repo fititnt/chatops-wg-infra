@@ -18,14 +18,16 @@ services:
       - mongo
 
     # Routing via Traefik; remove comments to allow direct access
-    # ports:
-    #   - 3000:3000
+    ports:
+      - 3000:3000
 
     labels:
       - "traefik.backend=rocketchat"
       - "traefik.frontend.rule=Host: rocketchat.chatopswg.xyz"
-#    networks:
-#      - etica_chat
+    networks:
+      - default
+#      - host
+      - traefik_traefik
 
   mongo:
     image: mongo:3.2
@@ -81,3 +83,11 @@ services:
 
   #networks:
   #  etica_chat:
+
+networks:
+#  host:
+#    external:
+#      name: host
+  traefik_traefik:
+    external:
+      name: traefik_traefik
