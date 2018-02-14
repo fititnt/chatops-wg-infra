@@ -12,6 +12,35 @@ sudo apt upgrade -y
 
 sudo apt install htop tree jq mosh -y # Not really necessary, but I, Rocha, like it on host VM
 
+### Swap & Casse pressure on Ubuntu 16.04
+## See https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04
+# Note: is a good idea setup some swap for peak memory usage, but is not cool
+#       with the hardware provider rely reavily on swap with SSH disks, because
+#       SSD have much more limited lifetime writes than HDD. Play nice.
+fallocate -l 2G /swapfile
+ls -lh /swapfile
+chmod 600 /swapfile
+ls -lh /swapfile
+mkswap /swapfile
+swapon /swapfile
+swapon --show
+
+# Make permanent
+cp /etc/fstab /etc/fstab.bak
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+# Swapness
+sysctl vm.swappiness=10
+vim /etc/sysctl.conf
+## Add at the end
+# vm.swappiness=10
+
+## Adjusting the Cache Pressure Setting
+sysctl vm.vfs_cache_pressure=50
+vim /etc/sysctl.conf
+## Add at the end
+# vm.vfs_cache_pressure=50
+
 ############################# **Security warning** #############################
 # This VM is designed for testing and be friendly even for who is new to docker
 # at least start project without care much about running docker on production.
