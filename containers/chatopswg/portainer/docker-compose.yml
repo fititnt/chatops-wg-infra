@@ -5,8 +5,6 @@ services:
     build: nginx/
     restart: unless-stopped
     container_name: "portainer-proxy"
-    ports:
-      - "8888:80"
     networks:
       - local
     labels:

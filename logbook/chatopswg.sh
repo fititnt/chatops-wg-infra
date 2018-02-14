@@ -116,6 +116,10 @@ docker logs -f traefik_traefik_1
 
 ### Portainer
 docker-compose -f ./portainer/docker-compose.yml up -d
+docker-compose -f ./portainer/docker-compose.yml up --build -d proxy  # If make changes to portainer-proxy (nginx), use this to rebuild it
+
+# See logs
+docker logs -f portainer-proxy
 
 ### Rocket.Chat
 # "Rocket.Chat is the leading free open source team chat Slack alternative (...)
