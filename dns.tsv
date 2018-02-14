@@ -4,6 +4,7 @@ www	A	45.55.32.60	www.chatopswg.xyz
 alpha	A	45.55.32.60	alpha.chatopswg.xyz, Alias for the VM 'ChatOpsWG'
 rocketchat	CNAME	alpha.chatopswg.xyz	Rocket.Chat
 traefik	CNAME	alpha.chatopswg.xyz	https://traefik.io/
+portainer	CNAME	alpha.chatopswg.xyz	Portainer https://portainer.io/
 ia001	CNAME	alpha.chatopswg.xyz	Reserved for possible future Intelligent agent
 ia002	CNAME	alpha.chatopswg.xyz	Reserved for possible future Intelligent agent
 ia003	CNAME	alpha.chatopswg.xyz	Reserved for possible future Intelligent agent

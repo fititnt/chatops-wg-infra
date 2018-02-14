@@ -114,6 +114,9 @@ docker logs -f traefik_traefik_1
 # To copy acme from a old backup:
 # scp -r /backup/chatopswg/alpha.chatopswg.xyz/temp/traefik/acme/acme.json root@alpha.chatopswg.xyz:/root/containers/traefik/acme/acme.json
 
+### Portainer
+docker-compose -f ./portainer/docker-compose.yml up -d
+
 ### Rocket.Chat
 # "Rocket.Chat is the leading free open source team chat Slack alternative (...)
 # Rocket.Chat is free, unlimited and open source. Replace Slack with the

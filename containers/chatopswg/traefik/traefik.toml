@@ -175,4 +175,4 @@ dnsProvider = "cloudflare" # https://docs.traefik.io/configuration/acme/
 
 [[acme.domains]]
   main = "chatopswg.xyz"
-  sans = ["www.chatopswg.xyz", "alpha.chatopswg.xyz", "rocketchat.chatopswg.xyz", "traefik.chatopswg.xyz", "ia001.chatopswg.xyz", "ia002.chatopswg.xyz", "ia003.chatopswg.xyz", "ia004.chatopswg.xyz", "ia005.chatopswg.xyz", "ia006.chatopswg.xyz", "ia007.chatopswg.xyz", "ia008.chatopswg.xyz", "ia009.chatopswg.xyz"]
+  sans = ["www.chatopswg.xyz", "alpha.chatopswg.xyz", "rocketchat.chatopswg.xyz", "traefik.chatopswg.xyz", "portainer.chatopswg.xyz", "ia001.chatopswg.xyz", "ia002.chatopswg.xyz", "ia003.chatopswg.xyz", "ia004.chatopswg.xyz", "ia005.chatopswg.xyz", "ia006.chatopswg.xyz", "ia007.chatopswg.xyz", "ia008.chatopswg.xyz", "ia009.chatopswg.xyz"]

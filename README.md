@@ -14,5 +14,6 @@ for more information about this repository.
 See list of domains on [chatops-wg README.md](https://github.com/fititnt/chatops-wg#deliverables-of-the-group-so-far).
 
 For internal usage URLs:
+- Portainer: <https://portainer.chatopswg.xyz>
 - Traefik, our load balancer: <http://traefik.chatopswg.xyz:8080>
   - Note: This URL is publicly available for educational reasons. **Do not** expose this trafik URL to projects in production.

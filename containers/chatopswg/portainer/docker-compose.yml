@@ -3,37 +3,66 @@ version: '2'
 services:
   proxy:
     build: nginx/
+    restart: unless-stopped
     container_name: "portainer-proxy"
     ports:
-      - "80:80"
+      - "8888:80"
     networks:
       - local
+    labels:
+      - "traefik.backend=portainer"
+      - "traefik.frontend.rule=Host: portainer.chatopswg.xyz"
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
 
   templates:
     image: portainer/templates
+    restart: unless-stopped
     container_name: "portainer-templates"
     networks:
       - local
+    labels:
+      - "traefik.enable=false"
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
 
   portainer:
     image: portainer/portainer
+    restart: unless-stopped
     container_name: "portainer-app"
 #Automatically choose 'Manage the Docker instance where Portainer is running' by adding <--host=unix:///var/run/docker.sock> to the command
-    command: --templates http://templates/templates.json
+    command: --templates http://templates/templates.json --host=unix:///var/run/docker.sock
     networks:
       - local
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /opt/portainer/data:/data
+    labels:
+      - "traefik.enable=false"
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
 
   watchtower:
     image: v2tec/watchtower
+    restart: unless-stopped
     container_name: "portainer-watchtower"
     command: --cleanup portainer-app portainer-watchtower portainer/templates
     networks:
       - local
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - "traefik.enable=false"
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
 
 networks:
   local:

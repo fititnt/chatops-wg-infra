@@ -8,6 +8,7 @@ services:
      - ./.env
     networks:
       - traefik
+      - portainer_local
       - rocketchat_default
       - iaphpbotman_default
       - iajsbotkit_default
@@ -40,6 +41,9 @@ networks:
   rocketchat_default:
     external:
       name: rocketchat_default
+  portainer_local:
+    external:
+      name: portainer_local
   iaphpbotman_default:
     external:
       name: iaphpbotman_default
