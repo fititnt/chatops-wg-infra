@@ -3,6 +3,7 @@ version: '2'
 services:
   traefik:
     image: traefik
+    restart: always # Is very important that the load balancer restart with the system
     env_file:
      - ./.env
     networks:
@@ -23,6 +24,10 @@ services:
       - ./acme:/etc/traefik/acme
     labels:
       - "traefik.frontend.rule=Host: traefik.chatopswg.xyz"
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
 
 # TODO: traefik should autodiscover and join other containers network with no
 #       need of update each time this file again (its purpose was to

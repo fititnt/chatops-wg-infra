@@ -24,6 +24,10 @@ services:
     labels:
       - "traefik.backend=rocketchat"
       - "traefik.frontend.rule=Host: rocketchat.chatopswg.xyz"
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
 #    networks:
 #      - etica_chat
 
@@ -36,6 +40,10 @@ services:
     command: mongod --smallfiles --oplogSize 128 --replSet rs0
     labels:
       - "traefik.enable=false"
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
 
   # this container's job is just run the command to initialize the replica set.
   # it will run the command and remove himself (it will not stay running)
@@ -68,6 +76,10 @@ services:
   # this is used to expose the hubot port for notifications on the host on port 3001, e.g. for hubot-jenkins-notifier
     ports:
       - 3001:8080
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
 
   #traefik:
   #  image: traefik:latest
