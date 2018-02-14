@@ -41,6 +41,16 @@ vim /etc/sysctl.conf
 ## Add at the end
 # vm.vfs_cache_pressure=50
 
+### Unattended updates on Ubuntu Server, only security updates
+## Is possible that your distro provider already have at least security updates enabled
+## If not, review it
+## See https://www.techrepublic.com/article/how-to-enable-unattended-updates-on-ubuntu-server-16-04/
+apt install unattended-upgrades
+
+vim /etc/apt/apt.conf.d/50unattended-upgrades
+## The like `"${distro_id}:${distro_codename}-security";` is about security updates. Possibly already uncommented
+## The line `"${distro_id}:${distro_codename}-updates";` is for other updates (not only security). Uncommented
+
 ############################# **Security warning** #############################
 # This VM is designed for testing and be friendly even for who is new to docker
 # at least start project without care much about running docker on production.
