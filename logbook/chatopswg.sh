@@ -134,6 +134,12 @@ docker-compose -f ./rocketchat/docker-compose.yml up -d mongo-init-replica  # On
 docker-compose -f ./rocketchat/docker-compose.yml up -d rocketchat
 docker-compose -f ./rocketchat/docker-compose.yml up -d hubot
 
+## Update
+# Pull images & update rocket.chat
+docker-compose -f rocketchat/docker-compose.yml pull
+# Recreate images if need. mongo container will update as dependency of rocketchat
+docker-compose -f ./rocketchat/docker-compose.yml up -d rocketchat
+
 ### Placeholder for static files
 docker-compose -f ./placeholder/docker-compose.yml up -d nginx
 docker-compose -f ./placeholder/docker-compose.yml up nginx # Debug
