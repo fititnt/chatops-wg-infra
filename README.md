@@ -1,17 +1,30 @@
-# ChatOps  Working Group 2018/01 - Infra
+# ChatOps WG 2018/01 - Infra
 See [ChatOps for non-DevOps people Working Group 2018/01](https://github.com/fititnt/chatops-wg)
 for more information about the motivation of this repository.
 
-**If you do DevOps**: this repository is part of what is the documentation of
-**how to do a playground for test softwares and integrations** related to ChatOps
-and tools that allow faster boostraping of [intelligent agents](https://en.wikipedia.org/wiki/Intelligent_agent),
-and **is desirable [NoOps approach](http://searchcloudapplications.techtarget.com/definition/noops)**
-(for the managers and programmers, not for DevOps who implement). This working group is limited
-to first semester of 2018, but the general idea is aligned with efforts in the
-long run with [Etica.AI/forum](https://github.com/EticaAI/forum) as one way to
-[empower non-developer people by looking how to do the interfaces of tomorrow](https://www.youtube.com/watch?time_continue=1125&v=zhkTHkIZJEc).
+This repository is part of what is the documentation and Infrastructure as a
+Code on **how to do a playground for test softwares and integrations** related
+to ChatOps and strategies with their tools that allow faster boostraping of
+[intelligent agents](https://en.wikipedia.org/wiki/Intelligent_agent).
+**Is desirable [NoOps approach](http://searchcloudapplications.techtarget.com/definition/noops)**
+(for the managers and programmers, not for us DevOps that implement).
+[The working group](https://github.com/fititnt/chatops-wg) is limited to first
+semester of 2018, but the general idea is aligned with efforts in the long run
+with [Etica.AI/forum](https://github.com/EticaAI/forum) as one way to [empower non-developer people by looking how to do the interfaces of tomorrow](https://www.youtube.com/watch?time_continue=1125&v=zhkTHkIZJEc).
+
+**If you do DevOps, a more sincere and practical explanation:** we configure
+some open source software using containers, setup some integrations with
+external services to abstract complexity and then do free support for some
+coworkers who are testing on experimental projects aiming real world usage.
+They debug problems and expend way more time than would not be acceptable
+be proposed as tested inovation on our daily work.
 
 ## Overview
+
+<!--
+TL;DR: a [virtual machine is used  configured to run docker containers](logbook/chatopswg.sh)
+-->
+
 
 ### Shortcuts
 
