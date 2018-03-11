@@ -16,15 +16,18 @@ with [Etica.AI/forum](https://github.com/EticaAI/forum) as one way to [empower n
 some open source software using containers, setup some integrations with
 external services to abstract complexity and then do free support for some
 coworkers who are testing on experimental projects aiming real world usage.
-They debug problems and expend way more time than would not be acceptable
-be proposed as tested inovation on our daily work.
+They debug problems and expend way more time than would be acceptable
+for us to propose be tested on our companies or clients: the usage would be near
+bleeding-edge as a product or service even if the underline technologies are
+ready for use in production or it depends of knowledge beyond scope of desired
+for who do DevOps, but depends on our help to be archived. At the end we have
+not only experience on new usages as our DevOps roles, but these coworkers are
+willing to help we push innovation to our companies or clients.
 
 ## Overview
 
 <!--
 TL;DR: a [virtual machine is used  configured to run docker containers](logbook/chatopswg.sh)
--->
-
 
 ### Shortcuts
 
@@ -41,6 +44,8 @@ The URL of applications that are not just to run the infrastructure
 
 #### How things are configured:
 
+-->
+
 - How the machine running containers is configured: read the [Logbook of ChatOpsWG "Alpha" server](logbook/chatopswg.sh)
   - Yes, we could convert this to a Chief / Puppet later; we lack of people who would focus on it
 - How the containers are configured:
@@ -49,12 +54,14 @@ The URL of applications that are not just to run the infrastructure
   - Sample agent with Botkit: [chatops-wg-ia-js-botkit](https://github.com/fititnt/chatops-wg-ia-js-botkit)
 - [DNS of domains used](dns.tsv)
 
+The URL of applications that are not just to run the infrastructure
+, [see main repository, chatops-wg](https://github.com/fititnt/chatops-wg).
+
+<!--
+
 ### The concept: the motivation
 The general idea is document the process of all that could be possible in
 the lifetime of the working group.
-
-<!--and learn how to interact in a productive way
-with people with different skills and previus experiences. -->
 
 _TODO: write about https://en.wikipedia.org/wiki/Bootstrapping#Business (fititnt, 2018-03-03 22:44 BRT)_
 
@@ -62,7 +69,12 @@ _TODO: write about https://en.wikipedia.org/wiki/Minimum_viable_product (fititnt
 
 _TODO: add the real overview (fititnt, 2018-03-03 21:53 BRT)_
 
+
 ## Important notice
+
+_TODO: write that we need more people who would do real usage than who do 
+devops, since takes time for each group trying something advance they
+knowledge than the potencial of how provice infra setup and support (fititnt, 2018-03-11 01:50 BRT)_
 
 Document work done in infrastructure is easier than the other areas of the group,
 since we can do [Infrastrutucre as a Code](https://en.wikipedia.org/wiki/Infrastructure_as_Code).
@@ -72,3 +84,5 @@ design a chatbot (Portuguese)](https://brasil.uxdesign.cc/ux-e-chatbots-boas-pr%
 
 
 1: `docker-compose up` is a (... TODO: explain the meaning (fititnt, 2018-03-10 14:36 BRT))
+
+-->
