@@ -12,6 +12,13 @@ sudo apt upgrade -y
 
 sudo apt install htop tree jq mosh -y # Not really necessary, but I, Rocha, like it on host VM
 
+# Create a user with sudo powers
+sudo adduser chatops # Save the password
+
+sudo visudo
+## Add at the end of file, to allow chatops run sudo without retype password. This could be disabled later
+# chatops  ALL=(ALL:ALL) NOPASSWD:ALL
+
 ### Swap & Casse pressure on Ubuntu 16.04
 ## See https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04
 # Note: is a good idea setup some swap for peak memory usage, but is not cool
@@ -77,11 +84,14 @@ sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial ma
 sudo apt-get update
 sudo apt-get install -y docker-engine
 
+# Allow chatops user run docker without sudo prefix
+sudo usermod -aG docker chatops
+
 ### Install Docker compose
 # See https://docs.docker.com/compose/install/#install-compose
 
 # change X.XX.X based on last release of https://github.com/docker/compose/releases
-dockerComposeVersion=1.18.0
+dockerComposeVersion=1.19.0
 
 sudo curl -L https://github.com/docker/compose/releases/download/$dockerComposeVersion/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
@@ -157,3 +167,15 @@ docker-compose -f ./ia-php-botman/docker-compose.yml up # Debug only
 
 docker-compose -f ./ia-js-botkit/docker-compose.yml up -d
 docker-compose -f ./ia-js-botkit/docker-compose.yml up # Debug only
+
+################################################################################
+# Extra information                                                            #
+################################################################################
+
+#### Moved containers from /root/containers to /home/chatopswg/containers
+
+## Created the new user
+sudo adduser chatops
+
+# Stop docker
+sudo systemctl stop docker
