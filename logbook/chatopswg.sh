@@ -6,6 +6,7 @@
 # ssh root@45.55.32.60
 # ssh root@chatopswg.alligo.com.br
 # mosh root@chatopswg.alligo.com.br
+# ssh chatops@alpha.chatopswg.xyz # this user can run docker and has sudo powers
 
 sudo apt update
 sudo apt upgrade -y
@@ -18,6 +19,11 @@ sudo adduser chatops # Save the password
 sudo visudo
 ## Add at the end of file, to allow chatops run sudo without retype password. This could be disabled later
 # chatops  ALL=(ALL:ALL) NOPASSWD:ALL
+
+# Add my public key to the new user
+sudo su - chatops -c "mkdir ~/.ssh"
+## CHANGE THIS TO YOUR PUBLIC KEY. Or use alternative method
+sudo su - chatops -c "curl http://www.fititnt.org/id_rsa.pub >> ~/.ssh/authorized_keys"
 
 ### Swap & Casse pressure on Ubuntu 16.04
 ## See https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04
@@ -97,13 +103,15 @@ sudo curl -L https://github.com/docker/compose/releases/download/$dockerComposeV
 sudo chmod +x /usr/local/bin/docker-compose
 
 ## Prepare place to store docker-compose files of containers
-mkdir /root/containers
+sudo su - chatops -c "mkdir /home/chatops/containers"
 
 ################################################################################
 # Cheat cheet to manage containers                                             #
 ################################################################################
 
-cd /root/containers # all commands are relative to this path
+# If you already is root, change to chatops user.
+# cd /home/chatops/containers # all commands are relative to this path
+cd ~/containers # all commands are relative to this path
 
 ## First time: need to start containers who create a network before traefik
 ## it will not complain about network not found (rocketchat,other... then traefik)
@@ -172,10 +180,31 @@ docker-compose -f ./ia-js-botkit/docker-compose.yml up # Debug only
 # Extra information                                                            #
 ################################################################################
 
-#### Moved containers from /root/containers to /home/chatopswg/containers
+##### Moved containers from /root/containers to /home/chatopswg/containers #####
+## Tip: this way have some small downtime. But for our case is not really a problem
 
 ## Created the new user
-sudo adduser chatops
+# **create the new user, 'chatops'
+
+# Stop docker containers BEFORE stop docker.
+docker stop $(docker ps -a -q)
+
+# Tip: look for services with 'restart: always'. They need some extra work.
 
 # Stop docker
 sudo systemctl stop docker
+
+sudo mv /root/containers /home/chatops
+sudo chown chatops:chatops /home/chatops/containers
+
+sudo systemctl start docker
+
+docker ps # Tip: if some container still runing, it could be using old path. Solve it
+
+# Turn on each container again on the new place
+# In our case, was just these services (consider when this information is commited)
+docker-compose -f ./traefik/docker-compose.yml up -d traefik
+docker-compose -f ./portainer/docker-compose.yml up -d
+docker-compose -f ./rocketchat/docker-compose.yml up -d rocketchat
+docker-compose -f ./ia-php-botman/docker-compose.yml up -d
+docker-compose -f ./ia-js-botkit/docker-compose.yml up -d

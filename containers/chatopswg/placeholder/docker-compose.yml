@@ -9,7 +9,7 @@ services:
         # ports:
         #     - "8100:80"
         command: /bin/sh -c "nginx -g 'daemon off;'"
-        restart: always
+        restart: unless-stopped
         labels:
             - "traefik.frontend.rule=Host: chatopswg.xyz,www.chatopswg.xyz,alpha.chatopswg.xyz,ia001.chatopswg.xyz,ia002.chatopswg.xyz,ia003.chatopswg.xyz,ia006.chatopswg.xyz,ia007.chatopswg.xyz,ia008.chatopswg.xyz,ia009.chatopswg.xyz"
         # TODO: configure maximum log filesize and number of files (fititnt, 2018-02-13 22:25 BRT)
